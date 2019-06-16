@@ -1,0 +1,177 @@
+﻿<html>
+<head>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <title>Design Agency</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <a class="navbar-brand" href="#">
+            <img src="data:image/png;base64,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" width="50" height="50" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Главная<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+
+
+    </nav>
+
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-8">Portfolio</h1>
+        <p class="lead">You're can Choose some or book for "KEY".</p>
+    </div>
+
+
+    <div class="container">
+        <div class="card-deck mb-3 text-center">
+
+            <div class="card mb-4 shadow-sm">
+                <img src="https://images.ua.prom.st/1424369332_tovar-s-defektom.jpg" class="card-img-top" alt="...">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Название товара</h4>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title pricing-card-title">
+                        $49.99
+                    </h2>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Краткое описание товара</li>
+                    </ul>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Book</button>
+                </div>
+            </div>
+            <div class="card mb-4 shadow-sm">
+                <img src="https://images.ua.prom.st/1424369332_tovar-s-defektom.jpg" class="card-img-top" alt="...">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Название товара</h4>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title pricing-card-title">
+                        $49.99
+                    </h2>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Краткое описание товара</li>
+                    </ul>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Book</button>
+                </div>
+            </div>
+            <div class="card mb-4 shadow-sm">
+                <img src="https://images.ua.prom.st/1424369332_tovar-s-defektom.jpg" class="card-img-top" alt="...">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Название товара</h4>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title pricing-card-title">
+                        $49.99
+                    </h2>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Краткое описание товара</li>
+                    </ul>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Book</button>
+                </div>
+            </div>
+            <div class="card mb-4 shadow-sm">
+                <img src="https://images.ua.prom.st/1424369332_tovar-s-defektom.jpg" class="card-img-top" alt="...">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Название товара</h4>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title pricing-card-title">
+                        $49.99
+                    </h2>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Краткое описание товара</li>
+                    </ul>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Book</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="card-deck mb-3 text-center">
+
+            <div class="card mb-4 shadow-sm">
+                <img src="https://images.ua.prom.st/1424369332_tovar-s-defektom.jpg" class="card-img-top" alt="...">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Название товара</h4>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title pricing-card-title">
+                        $49.99
+                    </h2>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Краткое описание товара</li>
+                    </ul>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Book</button>
+                </div>
+            </div>
+            <div class="card mb-4 shadow-sm">
+                <img src="https://images.ua.prom.st/1424369332_tovar-s-defektom.jpg" class="card-img-top" alt="...">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Название товара</h4>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title pricing-card-title">
+                        $49.99
+                    </h2>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Краткое описание товара</li>
+                    </ul>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Book</button>
+                </div>
+            </div>
+            <div class="card mb-4 shadow-sm">
+                <img src="https://images.ua.prom.st/1424369332_tovar-s-defektom.jpg" class="card-img-top" alt="...">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Название товара</h4>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title pricing-card-title">
+                        $49.99
+                    </h2>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Краткое описание товара</li>
+                    </ul>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Book</button>
+                </div>
+            </div>
+            <div class="card mb-4 shadow-sm">
+                <img src="https://images.ua.prom.st/1424369332_tovar-s-defektom.jpg" class="card-img-top" alt="...">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Название товара</h4>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title pricing-card-title">
+                        $49.99
+                    </h2>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Краткое описание товара</li>
+                    </ul>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Book</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+﻿@charset "utf-8";
+#content {
+    text-align:center;  
+    position:relative;
+    width: 100%;
+    padding: 0;
+    border: dashed 1px;
+    min-width: 800px;
+    top: 200px;
+    transition-duration: .2s;
+    transition-property: all;
+    transition-timing-function: cubic-bezier;
+}
+#content.scroll {
+    top:130px;
+}
+#topblock {
+    overflow: hidden;
+    border: dashed 1px;
+    width: 90vw;
+    min-width: 790px;
+    margin: 5px auto;
+    height: 30px;
+    position: relative;
+}
+#topblock.revo {
+    height:300px;
+}
+    #mainblock {
+    display: inline-block;
+    border: dashed 1px;
+    width:90vw;
+    min-width:550px;
+    margin: 5px;
+    height: auto;
+    position: relative;
+}
+#item {
+    display: inline-block;
+    position: relative;
+    width: 200px;
+    height: 300px;
+    margin: 10px 5px 10px 5px;
+    border: dashed 1px;
+}
+#kartinka {
+    position: relative;
+    width: 180px;
+    height: 180px;
+}
+#RozgButt {
+    margin:5px;
+    position:relative;
+    width:150px;
+    float:right;
+}
+#RozgButt:hover {
+    text-decoration:underline;
+}
+    #RozgButt:hover #arrow {
+        border-top-color: #000000;
+    }

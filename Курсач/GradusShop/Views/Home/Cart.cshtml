@@ -1,0 +1,374 @@
+﻿
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@model IEnumerable<WebPL.Model.ItemViewModel>
+
+
+<head>
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Корзина</title>
+    <link href="../css/headerstyle.css" rel="stylesheet" type="text/css" />
+    <link href="../css/contentstyle.css" rel="stylesheet" type="text/css" />
+    <link href="../css/Elements.css" rel="stylesheet" type="text/css" />
+    <link href="../css/footerstyle.css" rel="stylesheet" type="text/css" />
+    <link href="../css/CartPage.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="jquery-1.7.2.js"></script>
+    <script type="text/javascript">
+
+        $(window).on('load', function () {
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 10) {
+                    $('#header').addClass('scroll');
+                    $('#logotext').addClass('scroll');
+                    $('#menuline').addClass('scroll');
+                    $('#menu_li').addClass('scroll');
+                    $('#menu').addClass('scroll');
+                    $('#content').addClass('scroll');
+                }
+                else {
+                    $('#header').removeClass('scroll')
+                    $('#logotext').removeClass('scroll')
+                    $('#menuline').removeClass('scroll');
+                    $('#menu_li').removeClass('scroll');
+                    $('#menu').removeClass('scroll');
+                    $('#content').removeClass('scroll');
+                }
+            });
+
+        });
+    </script>
+    <script type="text/javascript">
+        $(window).on('load', function () {
+            var Token = sessionStorage.getItem('tokenKey');
+            var Email = sessionStorage.getItem('username');
+            if (Token != null) {
+                $('#auth2').css('display', 'block');
+                $('#auth1').css('display', 'none');
+                $('.userName').text(Email);
+            }
+            else {
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="LoginWindow" id="login">
+        <div id="FormStyle">
+            <div id="FormTop">Вхід до системи</div>
+            <div class="centred" id="loginf">
+                <div class="form-row">
+                    <input style="width:inherit;" type="text" id="emailLogin" required autocomplete="off"><label>E-mail</label>
+                </div>
+                <div class="form-row">
+                    <input style="width:inherit" type="password" id="passwordLogin" required autocomplete="off"><label>Пароль</label>
+                </div>
+                <input type="submit" class="button" id="Vhod" onclick="Login()" value="Увійти" />
+            </div>
+            <a href="#closed" id="closeBUT">Закрити</a>
+        </div>
+    </div>
+    <div class="LoginWindow" id="registration">
+        <div id="FormStyle">
+            <div id="FormTop">Рейстрація користувача</div>
+            <div class="centred" id="loginf">
+                <div class="form-row">
+                    <input style="width:inherit;" type="text" id="namereg" required autocomplete="off"><label>Ім'я</label>
+                </div>
+                <div class="form-row">
+                    <input style="width:inherit;" type="text" id="surreg" required autocomplete="off"><label>Прізвище</label>
+                </div>
+                <div class="form-row">
+                    <input style="width:inherit;" type="text" id="emailreg" required autocomplete="off"><label>E-mail</label>
+                </div>
+                <div class="form-row">
+                    <input style="width:inherit;" type="text" id="telreg" required autocomplete="off"><label>Телефон</label>
+                </div>
+                <div class="form-row">
+                    <input style="width:inherit;" type="password" id="passreg" required autocomplete="off"><label>Пароль</label>
+                </div>
+                <input type="submit" id="submit" onclick="reg()" class="button" value="Зарейструватися" />
+            </div>
+            <a href="#closed" id="closeBUT">Закрити</a>
+        </div>
+    </div>
+    <div id="fixed_line">
+        <div class="contacts">Контакти: +38 (096) 816-85-69</div>
+        <div class="authpanel" onload="AuthChek()" id="auth1">
+            Увійдіть до
+            <a href="#login">особистого кабінету</a> або
+            <a href="#registration">зарейструйтеся</a>
+        </div>
+        <div class="authpanel" id="auth2" style="display:none">
+            Ви увійшли як: <span class="userName"></span>
+            <a href="#" onclick="logout()">Вийти </a>
+        </div>
+    </div>
+    <div id="header" class="menutransition">
+        <a href="../"><h1 id="logotext" class="menutransition">Gradus Shop</h1></a>
+        <div id="menuline" class="menutransition">
+            <Div id="menu" class="menutransition">
+                <li id="menu_li" class="imgMenu">
+                    <img src="~/Resources/user.png" />
+                </li>
+                <li id="menu_li" class="imgMenu">
+                    <img src="~/Resources/cart.png" />
+                </li>
+                <li id="menu_li" class="menutransition"><a href="#">Міцні напої</a></li>
+                <li id="menu_li" class="menutransition"><a href="#">Пиво та сидр</a></li>
+                <li id="menu_li" class="menutransition">
+                    <a href="#" class="menutransition">Лікери</a>
+                </li>
+                <li id="menu_li" class="menutransition">
+                    <a href="#">Коньяк</a>
+                </li>
+                <li id="menu_li" class="menutransition">
+                    <a href="#">Вина</a>
+                </li>
+
+            </Div>
+        </div>
+    </div>
+
+    <div id="content">
+
+        <div style="width:auto; display:inline-block;" id="mainblock">
+            @if (Model != null)
+            {
+
+                foreach (var item in Model)
+                {
+                    <div id="CartItem">
+                        <img id="OnCartFoto" src="~/Resources/@item.MainPhoto" />
+                        <div id="CenterBlock">
+                            <div id="ItemNameCart">@item.Name</div>
+                            <div id="Amount" class="quantity">
+                                <button id="plusMin" onclick="Minus(@item.Id)" class="minus">-</button>
+                                <div id="@item.Id" class="TextQuant" style=""></div>
+                                <button id="plusMin" onclick="Plus(@item.Id,@item.Count)" class="plus">+</button>
+                            </div>
+                        </div>
+                        <div id="Delete" onclick="Delete(@item.Id)">Видалити</div>
+                    </div>
+
+                }
+                <div id="Sum">
+                    Сума замовлення:
+                </div>
+            }
+            else
+            {
+                <div id="CartItem">
+                    Корзина Пуста
+                </div>
+            }
+            <div id="OrderBlock">
+                <div class="form-row" style="width:40vw; display:inline-block;">
+                    <input style="width:39vw; height:40px;" type="text" id="addressorder" required autocomplete="off"><label style="width:inherit">Введіть адресу замовлення</label>
+                </div>
+                <input type="submit" class="button" style="width:40vw;  " value="Оформити замовлення" onclick="toorder()" />
+            </div>
+        </div>
+
+    </div>
+    <div id="footer">
+        <div id="footerline"></div>
+        <div class="centred">
+            <div id="footerlogo">Gradus shop <p>Інтернет-магазин спиртних напоїв</p></div>
+            <div id="footertext">Інтернет-магазин створений в рамках виконання курсової роботи з дисципліни "Архітектура програмного забезпечення" за 4 навчальний семестр</div>
+            <div id="footerRight"><p>Курсову роботу виконали:</p><a href="">Радін Владислав</a> <br /> <a href="">Зборщик Андрій</a> <br /> <a href="">Жилюк Ярослав</a></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function Delete(id) {
+            var Data = getCartData();
+            var DataNew = []
+            var iterator = 0;
+            for (var Item in Data) {
+                if (Data[Item][0] != id) {
+                    DataNew[Item - iterator] = Data[Item];
+                }
+                else {
+                    iterator++;
+                }
+            }
+            setCartData(DataNew);
+            var url = '/home/cart?ids=' + DataNew;
+            window.location.replace(url);
+
+        }
+        function Minus(id) {
+            var Data = getCartData();
+            for (var Item in Data) {
+                if (Data[Item][0] == id) {
+                    if (Data[Item][1] > 0) {
+                        Data[Item][1]--;
+                    }
+                }
+            }
+            setCartData(Data);
+            GetSUm();
+            GetCol();
+        }
+        function Plus(id, count) {
+            var Data = getCartData();
+            for (var Item in Data) {
+                if (Data[Item][0] == id) {
+                    if (Data[Item][1] <= count) {
+                        Data[Item][1]++;
+                    }
+                }
+            }
+            setCartData(Data);
+            GetSUm();
+            GetCol();
+        }
+        var sum = 0;
+        function GetSUm() {
+            var Data = getCartData();
+            sum = 0;
+            for (var Item in Data) {
+                var plus = 0;
+                plus = Data[Item][1] * Data[Item][2];
+                sum = sum + plus;
+            }
+            document.getElementById('Sum').innerHTML = 'Сума замовлення: ' + sum + ' грн.';
+        }
+    </script>
+    <script type="text/javascript">
+        function setCartData(o) {
+            localStorage.setItem('сart', JSON.stringify(o));
+            return false;
+        }
+        function getCartData() {
+            return JSON.parse(localStorage.getItem('сart'));
+        }
+        function GetCol() {
+            var Data = getCartData();
+
+            for (var Item in Data) {
+
+                document.getElementById(Data[Item][0]).innerHTML = Data[Item][1];
+            }
+        }
+        GetCol();
+        GetSUm();
+    </script>
+    <script type="text/javascript">
+    function toorder() {
+
+        var uid;
+        $.ajax({
+            url: '/api/Account/UserId',
+            data: uid,
+        });
+            var u = "В обробці";
+            var data = {
+                User: uid,
+                OrderedItems: (getCartData()).toString(),
+                Address: u,
+                Status: u,
+                DateTime: u
+            };
+            alert(JSON.stringify(data).toString());
+            $.ajax({
+                type: 'POST',
+                url: '/api/Order',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(data),
+                success: function (data) {
+                    
+                   
+                },
+                error: function (data) {
+                    
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function reg() {
+
+
+            var data = {
+                Email: $('#emailreg').val(),
+                Password: $('#passreg').val(),
+                ConfirmPassword: $('#passreg').val(),
+                Name: $('#namereg').val(),
+                Surname: $('#surreg').val(),
+                PhoneNumber: $('#telreg').val()
+            };
+            alert(JSON.stringify(data).toString());
+            $.ajax({
+                type: 'POST',
+                url: '/api/Account/Register',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(data),
+                success: function (data) {
+                    alert("Регистрация пройдена");
+                    window.location.replace("#closed");
+                    window.location.reload();
+                },
+                error: function (data) {
+                    alert("В процесе регистрации возникла ошибка");
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function Login() {
+            //...........................
+
+            var loginData = {
+                grant_type: 'password',
+                username: $('#emailLogin').val(),
+                password: $('#passwordLogin').val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '/Token',
+                data: loginData,
+                success: function (data) {
+                    // сохраняем в хранилище sessionStorage токен доступа
+                    sessionStorage.setItem('tokenKey', data.access_token);
+                    sessionStorage.setItem('username', data.userName);
+                    console.log(data.access_token);
+                    window.location.replace("#closed");
+                    window.location.reload();
+                },
+                error: function (data) {
+                    alert('При логине возникла ошибка');
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function logout() {
+            sessionStorage.removeItem('tokenKey');
+            window.location.reload();
+        }
+    </script>
+    <script type="text/javascript">
+        $(window).on('load', function () {
+            var Token = sessionStorage.getItem('tokenKey');
+            var Email = sessionStorage.getItem('username');
+            if (Token != null) {
+                $('#auth2').css('display', 'block');
+                $('#auth1').css('display', 'none');
+                $('.userName').text(Email);
+            }
+            else {
+            }
+        });
+    </script>
+
+</body>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

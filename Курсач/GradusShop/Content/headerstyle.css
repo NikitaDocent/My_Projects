@@ -1,0 +1,174 @@
+﻿@charset "utf-8";
+
+.menutransition {
+    transition-duration: .2s;
+    transition-property: all;
+    transition-timing-function: cubic-bezier;
+}
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background:#fff;
+}
+
+    body a {
+        color: white;
+        text-decoration: none;
+    }
+
+#fixed_line {
+    min-width:800px;
+    z-index:9;
+    align-content: center;
+    font-size: 13px;
+    position: fixed;
+    height: 35px;
+    width: 100%;
+    min-width: 800px;
+    background: #1e1e1e;
+    top: 0;
+    left: 0;
+}
+
+.contacts {
+    top: 3px;
+    padding: 5px;
+    position: inherit;
+    left: 100px;
+    color: white;
+    text-decoration: none;
+}
+
+.authpanel {
+    top: 3px;
+    padding: 5px;
+    position: inherit;
+    right: 100px;
+    color: white;
+    text-decoration: none;
+}
+
+    .authpanel a {
+        border-bottom: 1px dashed #FFFFFF;
+    }
+        .authpanel a:hover {
+            color: #fe6637;
+            border-bottom: none;
+        }
+
+#header {
+    z-index:9;
+    text-align: center;
+    position: fixed;
+    top: 35px;
+    left: 0;
+    height: 130px;
+    width: 100%;
+    min-width: 800px;
+    background: #373737;
+}
+
+    #header.scroll {
+        height: 50px;
+    }
+
+#logotext {
+    font-family: 'Lobster', cursive;
+    font-size: 35px;
+    color: #F78764;
+}
+    #logotext.scroll {
+        float:left;
+        position:relative;
+        left: 130px;
+        font-size: 17px;
+    }
+#menuline {
+    text-align: center;
+    position: fixed;
+    font-family: 'Roboto', sans-serif;
+    top: 165px;
+    height: 35px;
+    width: 100%;
+    min-width: 800px;
+    background: #F78764;
+}
+    #menuline.scroll {
+        top: 35px;
+        height: 50px;
+        background: none;
+    }
+#menu {
+    margin: 0 auto;
+    text-align: center;
+    top: 165px;
+    height: 35px;
+    width: 800px;
+    min-width: 800px;
+}
+#menu.scroll {
+    top:35px;
+    height:50px;
+    margin: 0 100px auto auto;
+}
+
+    #menu li {
+        text-align: center;
+        list-style: none;
+        height: 35px;
+        margin: 0 auto;
+        float: left;
+        width: 150px;
+        text-align: center;
+        position: relative;
+        padding-top: 0px;
+    }
+    #menu.scroll li {
+        text-align: center;
+        height: 43px;
+        float: right;
+        width:110px;
+        padding-top: 7px;
+        background: none;
+    }
+    #menu.scroll .imgMenu{
+        width:70px;
+        display:unset;
+    }
+    #menu li a {
+        float: none;
+        margin: 5px auto;
+        display: block;
+        width: 100px;
+        height: 30px;
+        color: white;
+        text-decoration: none;
+    }
+    #menu.scroll li a {
+        color: white;
+        text-decoration: none;
+    }
+    #menu li:hover {
+        background: #B86F52;
+    }
+
+    #menu.scroll li:hover a {
+        transition-duration: .2s;
+        transition-property: all;
+        transition-timing-function: cubic-bezier;
+        margin: 5px auto;
+        height: 35px;
+        color: #FFF;
+        background: none;
+        text-decoration: none;
+    }
+    #menu_li img {
+        margin:5px;
+        width:25px;
+        height:auto;
+    }
+    .imgMenu{
+        display:none;
+    }
+    .imgMenu:hover {
+        cursor:pointer;
+    }

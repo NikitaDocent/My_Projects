@@ -1,0 +1,223 @@
+﻿    @charset "utf-8";
+#MSBox {
+    position:fixed;
+    width: 100%;
+    height: 40px;
+    opacity: 0.9;
+    display: none;
+    background: #1a8b08;
+    color: white;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+    z-index: 99;
+}
+.LoginWindow {
+    align-content:center;
+    text-align:center;
+    position: fixed;
+    top: 35px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 99999;
+    transition: all;
+    display: none;
+    pointer-events: none;
+}
+    .LoginWindow:target {
+        display: block;
+        pointer-events: auto;
+    }
+#closeBUT{
+    position:absolute;
+    right:100px;
+    top:20px;
+    opacity:0.5;
+    font-weight:bold;
+}
+#closeBUT:hover {
+    opacity:1;
+}
+
+#FormStyle {
+    padding-bottom:20px;
+    background: white;
+    opacity: 1;
+    width: 500px;
+    height:auto;
+    margin: 50px auto;
+    -webkit-box-shadow: 0px 0px 1px 1px rgba(254,102,55,0.36);
+    -moz-box-shadow: 0px 0px 1px 1px rgba(254,102,55,0.36);
+    box-shadow: 0px 0px 1px 1px rgba(254,102,55,0.36);
+}
+#FormTop{
+    padding-top:5px;
+    padding-bottom:5px;
+    background:#F77A52;
+    color:white;
+    font-size:21px;
+    position:relative;
+    width:inherit;
+    height:35px;
+    text-align:center;
+}
+#closed .LoginWindow {
+    display:none;
+}
+.form-row {
+    position: relative;
+    width:200px;
+    margin-bottom: 40px;
+}
+
+    .form-row input {
+        display: block;
+        width: 200px;
+        padding: 0 10px;
+        line-height: 40px;
+        height:30px;
+        font-family: 'Roboto', sans-serif;
+        background: none;
+        border-width: 0;
+        border-bottom: 2px solid #808080;
+        transition: all 0.2s ease;
+    }
+
+    .form-row label {
+        position: absolute;
+        left: 13px;
+        color: #9d959d;
+        font-size: 20px;
+        font-weight: 300;
+        transform: translateY(-35px);
+        transition: all 0.2s ease;
+    }
+
+    .form-row input:focus {
+        outline: 0;
+        border-color: #F77A52;
+    }
+
+        .form-row input:focus + label,
+        .form-row input:valid + label {
+            transform: translateY(-60px);
+            margin-left: -14px;
+            font-size: 14px;
+            font-weight: 400;
+            outline: 0;
+            border-color: #F77A52;
+            color: #F77A52;
+        }
+.container {
+    font-size:16px;
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-top:12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+    /* Hide the browser's default checkbox */
+    .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #F77A52;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.FormText {
+    font-size:15px;
+}
+#loginf {
+    margin-top:30px;
+    width:200px;
+    align-content:center;
+    float:none;
+
+}
+.button {
+    margin:10px 10px;
+    width:inherit;
+    background: white;
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    padding: 10px 30px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #FFA184;
+    font-family: 'Montserrat', sans-serif;
+    color: #fe6637;
+    transition: .2s ease-in-out;
+}
+
+    .button:before {
+        content: "";
+        height: 50px;
+        width: 50px;
+        position: absolute;
+        top: -8px;
+        left: -75px;
+    }
+
+    .button:hover {
+        cursor: pointer;
+        background: #fe6637;
+        color: #fff;
+    }
+
+        .button:hover:before {
+            left: 150px;
+            transition: .5s ease-in-out;
+        }

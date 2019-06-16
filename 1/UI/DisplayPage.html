@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div id="AllClient">
+        <h4>All Client List</h4>
+
+        <table id="Clients">
+            <tr>
+                <th>Name</th>
+                <th>Money</th>
+                <th>Edit</th>
+                <th>View</th>
+            </tr>
+        </table>
+    </div>
+    <div>
+        Client ID:<input id="GetId" type="text" /><input type="button" value="Search" onclick="GetClient();" />
+        <p id="getClient"></p>
+    </div>
+    <div id="Sview">
+        <p id="Sdata"></p>
+    </div>
+    <div id="CEdit">
+        <p id="datas">
+            <label id="Lid" class="Cedit"> Id</label>
+            <input type="text" id="Id" class="Cedit" />
+            <label id="LName" class="Sedit"> Name</label>
+            <input type="text" id="name" class="Cedit" />
+            <label id="LMoney" class="Sedit"> Money</label>
+            <input type="text" id="Money" class="Cedit" />
+            <input type="button" id="Submit" class="Cedit" value="Add / Update" />
+        </p>
+    </div>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+    <script>
+    var link = 'api/Client';
+
+    $(document).ready(function () {
+        $(".Cedit").show()
+        $("#Submit").attr("onClick", "DAdd()")
+       view()
+    });
+    function view()
+    {
+        $.get(link).done(function (data) {
+            $.each(data, function (i, val) {
+                $("#Clients").append('<tr><td>' + val.clientName + '</td><td>' + val.clientMoney + '</td><td><input type=button id=' + val.clientID + ' value="Edit" onClick=CEdit(this);></td><td><input type=button id=' + val.clientID + ' value="View" onClick=SView(this);> </td><td><input type=button id=' + val.clientID + '  value="Delete" onClick=Ddelete(this);> </td></tr>')
+            });
+        });
+    }
+    function CEdit(Edval)
+    {
+        $("Cedit").hide()
+        $.getJSON(link + '/' + Edval.id).done(function (data) {
+            $(".Sedit").show()
+            $("#Id").attr("value", data.clientID)
+            $("#name").attr("value", data.clientName)
+            $("#Money").attr("value", data.clientMoney)
+            $("#Submit").attr("onclick", "update()")
+        });
+    }
+    function update()
+    {
+        var client = {
+            clientID: $("#Id").val(),
+            clientName: $("#name").val(),
+            clientMoney: $("#Money").val(),
+        }
+        $.ajax({
+            url: link + '/' + client.clientID,
+            type: 'PUT',
+            datatype: 'JSON',
+            data: JSON.stringify(client),
+            contentType: "application/json",
+            success: function (data) {
+                $("#Id").attr("value", "")
+                $("#name").attr("value", "")
+                $("#Money").attr("value", "")
+                alert("dataupdated");
+                location.reload();
+            },
+            fail: function () {
+                alert("data update Failed!!!")
+            }
+        });
+    }
+    function SView(VVal)
+    {
+        $.getJSON(link + '/' + VVal.id).done(function (data) {
+            $("#Sdata").text(GetVal(data))
+        });
+    }
+    function GetVal(client)
+    {
+        return "ID: " + client.clientID + " , Name: " + client.clientName + " , Money: " + client.clientMoney
+    }
+    function GetClient(Bvalue)
+    {
+        var clientid = $("#GetId").val();
+
+        $.getJSON(link + '/' + Client).done(function (data) {
+            $("#getClient").text( GetVal(data) )
+        }).fail(function () {
+            alert("data not found");
+        });
+    }
+    function DAdd()
+    {
+        var client = {
+            clientID: $("#Id").val(),
+            clientName: $("#name").val(),
+            clientMoney: $("#Money").val(),
+        }
+        $.ajax({
+            url: link + '/Client',
+            type: 'POST',
+            datatype: 'JSON',
+            data: JSON.stringify(client),
+            contentType: "application/json",
+            success: function (data) {
+                $("#Id").attr("value", "")
+                $("#name").attr("value", "")
+                $("#Money").attr("value", "")
+                alert("data insertion successfull");
+                location.reload();
+            },
+            fail: function () {
+                alert("data insertion Failed!!!")
+            }
+        });
+   //     $.post(link + '/' + studet).success(function () {
+   //         alert('Data update Successfully');
+   //     }).fail(function () {
+   //         alert('Data updation failed');
+   //     });
+    }
+    function Ddelete(Dval)
+    {
+        $.ajax({
+            url: link + '/' + Dval.id,
+            type: 'Delete',
+            datatype: 'JSON',
+            contentType: "application/json",
+            success: function (data) {
+                alert("data Deleted successfully!!!")
+                location.reload();
+            },
+            fail: function () {
+                alert("Deletion Failed!!!")
+            }
+        });
+    }
+    </script>
+</body>
+</html>

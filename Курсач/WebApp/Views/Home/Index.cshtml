@@ -1,0 +1,144 @@
+﻿@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@model IEnumerable<WebPL.Model.ItemViewModel>
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Магаз алкашки</title>
+
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="jquery-1.7.2.js"></script>
+<script type="text/javascript">
+
+    $(window).on('load', function () {
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 10) {
+                $('#header').addClass('scroll');
+                $('#logotext').addClass('scroll');
+                $('#menuline').addClass('scroll');
+                $('#menu_li').addClass('scroll');
+                $('#menu').addClass('scroll');
+                $('#content').addClass('scroll');
+            }
+            else {
+                $('#header').removeClass('scroll')
+                $('#logotext').removeClass('scroll')
+                $('#menuline').removeClass('scroll');
+                $('#menu_li').removeClass('scroll');
+                $('#menu').removeClass('scroll');
+                $('#content').removeClass('scroll');
+            }
+        });
+
+    });
+
+</script>
+
+
+<script src="~/Scripts/index.js"></script>
+<body>
+
+    <div class="page-wrapper">
+        <div id="fixed_line">
+            <div class="contacts">Контакти: +38 (096) 816-85-69</div>
+            <div class="authpanel">
+                Увійдіть до
+                <a href="">особистого кабінету</a> або
+                <a class="trigger" href="#">зарейструйтеся</a>
+
+
+            </div>
+        </div>
+        <div id="header" class="menutransition">
+            <h1 id="logotext" class="menutransition">Алкашка от Валєри</h1>
+            <div id="menuline" class="menutransition">
+                <Div id="menu" class="menutransition">
+                    <li id="menu_li" class="menutransition"><a href="#">Каніна</a></li>
+                    <li id="menu_li" class="menutransition"><a href="#">Вадяра</a></li>
+                    <li id="menu_li" class="menutransition">
+                        <a href="#" class="menutransition">Півас</a>
+                    </li>
+                    <li id="menu_li" class="menutransition">
+                        <a href="#">Рево</a>
+                    </li>
+                    <li id="menu_li" class="menutransition">
+                        <a href="#">Віскарь</a>
+                    </li>
+                </Div>
+            </div>
+        </div>
+
+        <div id="content">
+
+
+            <div id="topblock">
+                <div id="RozgButt">Фільтрувати</div>
+                <div id="Categ"></div>
+            </div>
+            <div id="mainblock">
+                @foreach (var item in Model)
+                {
+                    string s = "/Resources/" + item.MainPhoto;
+
+                    <div id="item">
+                        <div>
+
+                            <img src="@s" id="kartinka" width="180" />
+                        </div>
+                        <div>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </div>
+                        <div>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+        <div id="footer">
+        </div>
+    </div>
+    <div class="modal-wrapper">
+        <div class="modal">
+            <div class="head">
+               Каніна
+            </div>
+            <div class="content">
+                <div class="good-job trigger">
+                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                    <h1>Good Job!</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+</body>
+
+
+    
+
+
+<script type="text/javascript">
+    var d = 0;
+    $('#RozgButt').click(function () {
+        if (d == 0) {
+            $('#topblock').addClass('revo');
+            d = 1;
+        }
+        else {
+            $('#topblock').removeClass('revo');
+            d = 0;
+        }
+    }
+    );
+</script>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+@*@RenderSection("scripts", required: false)*@
+
